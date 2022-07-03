@@ -1,10 +1,12 @@
 import { React, useState } from 'react';
+import Home from './homePage'
 
 function Signup() {
 
     //const [userName, setUserName] = useState("");
     const initialState = { fname: 'test', lname: 'test', email: '', password: '' }
     const [createUser, setcreateUser] = useState(initialState);
+    const [success,setSusses]= useState(false);
 
     const onchangeFields = (event) => {
         const copyState = { ...createUser }
@@ -17,7 +19,8 @@ function Signup() {
     }
 
     return (
-        <div className="container-fluid container">
+        <>
+        {!success&&(< div className="container-fluid container">
             <h2>Welcome to MIU WAA course </h2>
             <div className="welcome border alert alert-success container">
                 <form className="minForm">
@@ -57,7 +60,8 @@ function Signup() {
                     </div>
                 </form>
             </div>
-        </div>
+        </div>)}
+        {success&&(<Home/>)}</>
     )
 }
 
